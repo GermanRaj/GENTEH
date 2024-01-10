@@ -1,0 +1,72 @@
+-- Homework
+
+-- TASK 1
+-- Создайте таблицу goods (id, title, quantity)
+
+create database homework;
+use homework;
+create table goods (
+id int,
+title varchar (64),
+quantity int
+);
+
+-- TASK 2
+
+-- Добавьте несколько строk.
+
+INSERT INTO goods(id, title, quantity) VALUES (1,'book', 5);
+INSERT INTO goods(id, title, quantity) VALUES (2, 'Apple', 20);
+INSERT INTO goods(id, title, quantity) VALUES (3, 'Candy', 35);
+
+SELECT
+*
+FROM goods;
+
+-- TASK 3
+
+-- Добавьте поле price (integer) со значением по умолчанию 0
+
+SET SQL_SAFE_UPDATES = 0;
+
+ALTER TABLE goods
+ADD price int;
+
+Update  goods
+SET price = 0;
+
+-- TASK 4
+-- Измените тип поля price на numeric(8, 2)
+-- перед изменением типа необходимо очистить поле
+
+UPDATE goods 
+SET price = NULL;
+
+ALTER TABLE goods
+MODIFY COLUMN price numeric(8, 2);
+
+-- TASK 5
+-- Измените тип обратно на integer
+
+ALTER TABLE goods
+MODIFY COLUMN price integer;
+
+-- TASK 6
+-- Переименуйте поле на item_price
+
+ALTER TABLE goods
+CHANGE price item_price integer;
+
+-- TASK 7
+-- Удалите это поле
+
+ALTER TABLE goods
+DROP COLUMN item_price;
+
+
+
+
+
+
+
+
